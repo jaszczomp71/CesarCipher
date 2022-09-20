@@ -1,5 +1,6 @@
 from base64 import encode
 from pydoc import plain
+from turtle import position
 
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -7,6 +8,17 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
+
+def caesar(start_text, shift_amount, cipher_direction):
+      end_text = ""
+      for letter in start_text:
+            position = alphabet.index(letter)
+            if cipher_direction == "decode":
+                  shift_amount *= -1
+            new_position = position + shift_amount
+            end_text += alphabet[new_position]
+      print(f"Twoj {cipher_direction}any tekst to: {end_text}")
+
 
 def encrypt(plain_text, shift_amount):
   cipher_text = ""
